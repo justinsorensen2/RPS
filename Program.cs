@@ -119,15 +119,27 @@ namespace RPS
         //Display the computer's selection
         Console.WriteLine("The computer selected " + computerInput + ".");
         //compare the inputs of user and computer and determine winner
-        if (computerInput == "rock" || computerInput == "spock" && userInput == "scissors")
+        if (computerInput == "spock" && userInput == "scissors")
         {
           Console.WriteLine(playerName + ", sorry. You lost.");
         }
-        else if (computerInput == "paper" || computerInput == "spock" && userInput == "rock")
+        else if (computerInput == "rock" && userInput == "scissors")
         {
           Console.WriteLine(playerName + ", sorry. You lost.");
         }
-        else if (computerInput == "scissors" || userInput == "lizard" && userInput == "paper")
+        else if (computerInput == "paper" && userInput == "rock")
+        {
+          Console.WriteLine(playerName + ", sorry. You lost.");
+        }
+        else if (computerInput == "spock" && userInput == "rock")
+        {
+          Console.WriteLine(playerName + ", sorry. You lost.");
+        }
+        else if (computerInput == "scissors" && userInput == "paper")
+        {
+          Console.WriteLine(playerName + ", sorry. You lost.");
+        }
+        else if (userInput == "lizard" && userInput == "paper")
         {
           Console.WriteLine(playerName + ", sorry. You lost.");
         }
