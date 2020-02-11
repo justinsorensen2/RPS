@@ -15,7 +15,7 @@ namespace RPS
         Console.WriteLine("Please enter your name.");
         var playerName = Console.ReadLine();
         //display a welcome to the game
-        Console.WriteLine("Welcome, " + playerName + "! Let's play Rock, Paper, Scissors!");
+        Console.WriteLine("Welcome, " + playerName + "! Let's play Rock, Paper, Scissors, Lizard, Spock!");
         //ask player to type in difficulty selection - easy, normal, or impossible
         Console.WriteLine("Please type your difficulty selection. Valid entries are easy, normal, or impossible.");
         //take input and turn into var, then run error checking
@@ -29,12 +29,12 @@ namespace RPS
         {
           Console.WriteLine("Thank you. On to the game.");
         }
-        //ask user to type in rock, paper, or scissors
-        Console.WriteLine("Please type your selection. Valid entries are rock, paper, or scissors.");
+        //ask user to type in rock, paper, scissors, lizard, spock
+        Console.WriteLine("Please type your selection. Valid entries are rock, paper, scissors, lizard, or spock.");
         //create variable from player input
         var userInput = Console.ReadLine().ToLower();
-        //error correction on RPS input;
-        if (userInput != "rock" && userInput != "paper" && userInput != "scissors")
+        //error correction on RPS input
+        if (userInput != "rock" && userInput != "paper" && userInput != "scissors" && userInput != "lizard" && userInput != "spock")
         {
           Console.WriteLine("That is not a valid entry. Please try again.");
           userInput = Console.ReadLine().ToLower();
@@ -48,18 +48,26 @@ namespace RPS
         {
           //create a random number and use result to determine computer decision for playing RPS
           Random rand1 = new Random();
-          int randOutput = rand1.Next(1, 100);
-          if (randOutput >= 1 && randOutput < 33)
+          int randOutput = rand1.Next(1, 5);
+          if (randOutput == 1)
           {
             computerInput = "rock";
           }
-          else if (randOutput > 33 && randOutput < 66)
+          else if (randOutput == 2)
           {
             computerInput = "paper";
           }
-          else if (randOutput > 66 && randOutput <= 100)
+          else if (randOutput == 3)
           {
             computerInput = "scissors";
+          }
+          else if (randOutput == 4)
+          {
+            computerInput = "lizard";
+          }
+          else if (randOutput == 5)
+          {
+            computerInput = "spock";
           }
         }
         else if (diffLev == "easy")
@@ -76,6 +84,14 @@ namespace RPS
           {
             computerInput = "paper";
           }
+          else if (userInput == "lizard")
+          {
+            computerInput = "spock";
+          }
+          else if (userInput == "spock")
+          {
+            computerInput = "rock";
+          }
         }
         else if (diffLev == "impossible")
         {
@@ -91,19 +107,27 @@ namespace RPS
           {
             computerInput = "rock";
           }
+          else if (userInput == "lizard")
+          {
+            computerInput = "rock";
+          }
+          else if (userInput == "spock")
+          {
+            computerInput = "lizard";
+          }
         }
         //Display the computer's selection
         Console.WriteLine("The computer selected " + computerInput + ".");
         //compare the inputs of user and computer and determine winner
-        if (computerInput == "rock" && userInput == "scissors")
+        if (computerInput == "rock" || computerInput == "spock" && userInput == "scissors")
         {
           Console.WriteLine(playerName + ", sorry. You lost.");
         }
-        else if (computerInput == "paper" && userInput == "rock")
+        else if (computerInput == "paper" || computerInput == "spock" && userInput == "rock")
         {
           Console.WriteLine(playerName + ", sorry. You lost.");
         }
-        else if (computerInput == "scissors" && userInput == "paper")
+        else if (computerInput == "scissors" || userInput == "lizard" && userInput == "paper")
         {
           Console.WriteLine(playerName + ", sorry. You lost.");
         }
