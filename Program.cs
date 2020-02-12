@@ -118,28 +118,24 @@ namespace RPS
         }
         //Display the computer's selection
         Console.WriteLine("The computer selected " + computerInput + ".");
-        //compare the inputs of user and computer and determine winner
-        if (computerInput == "spock" && userInput == "scissors")
+        //compare the inputs of user and computer and determine winner by first enumerating all loss conditions, then ties, else wins
+        if ((computerInput == "spock" && userInput == "scissors") || (computerInput == "rock" && userInput == "scissors"))
         {
           Console.WriteLine(playerName + ", sorry. You lost.");
         }
-        else if (computerInput == "rock" && userInput == "scissors")
+        else if ((computerInput == "paper" && userInput == "rock") || (computerInput == "spock" && userInput == "rock"))
         {
           Console.WriteLine(playerName + ", sorry. You lost.");
         }
-        else if (computerInput == "paper" && userInput == "rock")
+        else if ((computerInput == "scissors" && userInput == "paper") || (userInput == "lizard" && userInput == "paper"))
         {
           Console.WriteLine(playerName + ", sorry. You lost.");
         }
-        else if (computerInput == "spock" && userInput == "rock")
+        else if ((computerInput == "scissors" && userInput == "lizard") || (computerInput == "rock" && userInput == "lizard"))
         {
           Console.WriteLine(playerName + ", sorry. You lost.");
         }
-        else if (computerInput == "scissors" && userInput == "paper")
-        {
-          Console.WriteLine(playerName + ", sorry. You lost.");
-        }
-        else if (userInput == "lizard" && userInput == "paper")
+        else if ((computerInput == "lizard" && userInput == "spock") || (computerInput == "paper" && userInput == "spock"))
         {
           Console.WriteLine(playerName + ", sorry. You lost.");
         }
